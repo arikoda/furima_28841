@@ -26,88 +26,94 @@ Things you may want to cover:
 
 ## usersテーブル
 
-|  Column  |    Type    |   Options   |
-| -------- | -----------| ------------|
-| nickname |   string   | null: false |
-| email    |   string   | null: false |
-| password |   string   | null: false |
-| address  |   string   | null: false |
-| telephone|   integer  | null: false |
+|    Column     |    Type    |   Options   |
+| ------------- | -----------| ------------|
+| family_name   |   string   | null: false |
+| first_name    |   string   | null: false |
+| family_n_ruby |   string   | null: false |
+| first_n_ruby  |   string   | mill: false | 
+| nickname      |   string   | null: false |
+| email         |   string   | null: false |
+| password      |   string   | null: false |
+| birth_year    |   integer  | null: false |
+| birth_month   |   integer  | null: false |
+| birth_day     |   integer  | null: false |
 
 ### Association
 - has_many :items
 - has_many :orders
-- has_many :shopping_address
+- has_many :addresses
 - has_many :comments
 - has_many :favorite_items
 
 
 ## itemsテーブル
 
-|  Column  |    Type    |   Options   |
-| -------- | -----------| ----------- |
-|   text   |    text    | null: false |
-|  image   |    text    | null: false |
-|  price   |   integer  | null: false |
-|  category|   string   | null: false |
-|  use_id  | references | null: false |
+|  Column      |    Type    |   Options   |
+| ------------ | -----------| ----------- |
+|  name        |  string    | null: false | 
+|  explanation |  text      | null: false |
+|  image       |  text      | null: false |
+|  price       |  integer   | null: false |
+|  category    |  integer   | null: false |
+|  condition   |  integer   | null: false |
+|  postage     |  integer   | null: false |
+|  send_day    |  integer   | null: false |
+|  user        | references | null: false |
 
 ### Association
-- has_one :orders
+- has_one  :order
 - has_many :comments
-- has_one :shopping_address
-- belongs_to :users
+- has_one  :address
+- belongs_to :user
 - has_many :favorite_items
 
 ## ordersテーブル
 
 |   Column   |    Type    |   Options   |
 | ---------- | -----------| ----------- |
-| card_number| integer    |             |
-|   term     | date       |             |
-|  seq_num   | integer    |             |
-|   item_id  | references | null: false |
-|   user_id  | references | null: false |
+|   item     | references | null: false |
+|   user     | references | null: false |
 
 ### Association
-- belongs_to :items
-- belongs_to :users
-- has_one :shopping_address
-
+- belongs_to :item
+- belongs_to :user
+- has_one :address
 
 ## commentsテーブル
 
 |  Column  |    Type    |   Options   |
 | -------- | -----------| ----------- |
-|   text   |     text   | null: false |
-|  user_id | references | null: false |
-|  item_id | references | null: false |
+|  text    | text       | null: false |
+|  user    | references | null: false |
+|  item    | references | null: false |
 
 ### Association
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
-## shopping_addressテーブル
+## addressテーブル
 
-|    Column   |    Type    |   Options   |
-| ----------- | -----------| ----------- |
-| postal_code |   integer  | null: false |
-|   address   |   string   | null: false |
-|   user_id   | references | null: false |
-|  telephone  |  integer   | null:false  |
+|    Column      |    Type     |   Options   |
+| -------------- | ------------| ----------- |
+| postal_code    |  integer    | null: false |
+| prefecture     |  integer    | null: false | 
+| municipality   |  string     | null: false | 
+| home_number    |  integer    | null: false |
+| building_number|  integer    | null: false |
+| user           |  references | null: false |
+| telephone      |  string     | null:false  |
 
 ### Association
-- belongs_to: orders
-- belongs_to: users
-- belongs_to: items
+- belongs_to: order
 
 ## favorite_itemsテーブル
 
 |    Column   |    Type    |   Options                     |
 | ----------- | -----------| ----------------------------- |
-|   item_id   | references | null: false, foreign_key: true|
-|   user_id   | references | null: false, foreign_key: true|
+|   item      | references | null: false, foreign_key: true|
+|   user      | references | null: false, foreign_key: true|
 
 ### Association
-- belongs_to: users
-- belongs_to: items
+- belongs_to: user
+- belongs_to: item
