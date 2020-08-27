@@ -35,9 +35,8 @@ Things you may want to cover:
 | nickname      |   string   | null: false |
 | email         |   string   | null: false |
 | password      |   string   | null: false |
-| birth_year    |   integer  | null: false |
-| birth_month   |   integer  | null: false |
-| birth_day     |   integer  | null: false |
+| birthday      |   date     | null: false |
+
 
 ### Association
 - has_many :items
@@ -96,11 +95,11 @@ Things you may want to cover:
 
 |    Column      |    Type     |   Options   |
 | -------------- | ------------| ----------- |
-| postal_code    |  integer    | null: false |
+| postal_code    |  string     | null: false |
 | prefecture     |  integer    | null: false | 
 | municipality   |  string     | null: false | 
 | home_number    |  integer    | null: false |
-| building_number|  integer    | null: false |
+| building_number|  integer    |             |
 | user           |  references | null: false |
 | telephone      |  string     | null:false  |
 
