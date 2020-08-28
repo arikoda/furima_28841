@@ -98,7 +98,7 @@ Things you may want to cover:
 | municipality   |  string     | null: false                    | 
 | home_number    |  string     | null: false                    |
 | building_number|  string     |                                |
-| user           |  references | null: false, foreign_key: true |
+| order          |  references | null: false, foreign_key: true |
 | telephone      |  string     | null:false                     |
 
 ### Association
