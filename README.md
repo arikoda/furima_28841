@@ -39,40 +39,38 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :items
-- has_many :orders
-- has_many :addresses
 - has_many :comments
 - has_many :favorite_items
+- has_many :items
+- has_many :orders
 
 
 ## itemsテーブル
 
-|  Column      |    Type    |   Options   |
-| ------------ | -----------| ----------- |
-|  name        |  string    | null: false | 
-|  explanation |  text      | null: false |
-|  image       |  text      | null: false |
-|  price       |  integer   | null: false |
-|  category    |  integer   | null: false |
-|  condition   |  integer   | null: false |
-|  postage     |  integer   | null: false |
-|  send_day    |  integer   | null: false |
-|  user        | references | null: false |
+|  Column           |    Type    |   Options                      |
+| ----------------- | -----------| ------------------------------ |
+|  name             |  string    | null: false                    | 
+|  explanation      |  text      | null: false                    |
+|  image            |  text      | null: false                    |
+|  price            |  integer   | null: false                    |
+|  category         |  integer   | null: false                    |
+|  condition        |  integer   | null: false                    |
+|  shipping_charges |  integer   | null: false                    |
+|  send_day         |  integer   | null: false                    |
+|  user             | references | null: false, foreign_key: true |
 
 ### Association
-- has_one  :order
-- has_many :comments
-- has_one  :address
 - belongs_to :user
 - has_many :favorite_items
+- has_one :order
+- has_many :comments
 
 ## ordersテーブル
 
-|   Column   |    Type    |   Options   |
-| ---------- | -----------| ----------- |
-|   item     | references | null: false |
-|   user     | references | null: false |
+|   Column   |    Type    |   Options                      |
+| ---------- | -----------| ------------------------------ |
+|   item     | references | null: false, foreign_key: true |
+|   user     | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
@@ -81,11 +79,11 @@ Things you may want to cover:
 
 ## commentsテーブル
 
-|  Column  |    Type    |   Options   |
-| -------- | -----------| ----------- |
-|  text    | text       | null: false |
-|  user    | references | null: false |
-|  item    | references | null: false |
+|  Column  |    Type    |   Options                      |
+| -------- | -----------| ------------------------------ |
+|  text    | text       | null: false                    |
+|  user    | references | null: false, foreign_kye: true |
+|  item    | references | null: false, foreign_kye: true |
 
 ### Association
 - belongs_to :item
@@ -93,25 +91,25 @@ Things you may want to cover:
 
 ## addressテーブル
 
-|    Column      |    Type     |   Options   |
-| -------------- | ------------| ----------- |
-| postal_code    |  string     | null: false |
-| prefecture     |  integer    | null: false | 
-| municipality   |  string     | null: false | 
-| home_number    |  integer    | null: false |
-| building_number|  integer    |             |
-| user           |  references | null: false |
-| telephone      |  string     | null:false  |
+|    Column      |    Type     |   Options                      |
+| -------------- | ------------| ------------------------------ |
+| postal_code    |  string     | null: false                    |
+| prefecture     |  integer    | null: false                    | 
+| municipality   |  string     | null: false                    | 
+| home_number    |  string     | null: false                    |
+| building_number|  string     |                                |
+| user           |  references | null: false, foreign_key: true |
+| telephone      |  string     | null:false                     |
 
 ### Association
 - belongs_to: order
 
 ## favorite_itemsテーブル
 
-|    Column   |    Type    |   Options                     |
-| ----------- | -----------| ----------------------------- |
-|   item      | references | null: false, foreign_key: true|
-|   user      | references | null: false, foreign_key: true|
+|    Column   |    Type    |   Options                      |
+| ----------- | -----------| ------------------------------ |
+|   item      | references | null: false, foreign_key: true |
+|   user      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to: user
