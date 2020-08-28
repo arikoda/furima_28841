@@ -55,6 +55,7 @@ Things you may want to cover:
 |  price            |  integer   | null: false                    |
 |  category         |  integer   | null: false                    |
 |  condition        |  integer   | null: false                    |
+|  origin_area      |  integer   | null: false                    |
 |  shipping_charges |  integer   | null: false                    |
 |  send_day         |  integer   | null: false                    |
 |  user             | references | null: false, foreign_key: true |
