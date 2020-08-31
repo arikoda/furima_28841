@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+  private
 
     def configure_permitted_parameters
       added_attrs = [ :family_name, :first_name, :nickname, :family_n_ruby, :first_n_ruby, :birthday ]        
