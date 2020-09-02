@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_charge
   belongs_to_active_hash :origin_area
   belongs_to_active_hash :send_day
+  has_one_attached :image
 
   validates :name, presence: true
   validates :explanation, presence: true
