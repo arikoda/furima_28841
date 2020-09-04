@@ -26,6 +26,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank", 'Condition is not a number')
       end
+      it '状態の選択がid1の場合（未選択）の場合保存ができない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+      end
 
       it '商品の説明がないと保存できない' do
         @item.explanation = ''
@@ -38,11 +43,21 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
+      it 'カテゴリーの選択がid1の場合（未選択）の場合保存ができない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
 
       it '配送料負担の選択がされていないと保存できない' do
         @item.shipping_charges_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping charges can't be blank")
+      end
+      it '配送料負担の選択がid1の場合（未選択）の場合保存ができない' do
+        @item.shipping_charges_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping charges must be other than 1')
       end
 
       it '発送元の地域についての情報が選択されていないと保存できない' do
@@ -50,11 +65,21 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Origin area can't be blank", 'Origin area is not a number')
       end
+      it '配送元の選択がid1の場合（未選択）の場合保存ができない' do
+        @item.origin_area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Origin area must be other than 1')
+      end
 
       it '発送日数が選択されていないと保存できない' do
         @item.send_day_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Send day can't be blank")
+      end
+      it '配送日数の選択がid1の場合（未選択）の場合保存ができない' do
+        @item.send_day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Send day must be other than 1')
       end
 
       it '価格情報が入力されていないと保存できない' do
@@ -68,6 +93,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be greater than 299')
       end
+      it '価格情報が10000000円以上で設定されていると保存できない' do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+      end
 
       it '販売価格が全角で入力されていると保存できない' do
         @item.price = '３００'
@@ -79,6 +109,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
+
     end
   end
 end
