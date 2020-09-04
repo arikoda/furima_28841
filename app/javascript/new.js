@@ -6,7 +6,6 @@ window.addEventListener('load', function(){
   price.addEventListener('keyup', function(){
     //priceの値を取得して、変数に代入
     price_value  = price.value
-    console.log(price_value)
     //計算した値を変数に代入
     tax_value = parseInt(price_value * 0.1)
     tax.innerHTML = tax_value
