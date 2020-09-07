@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than: 299, less_than: 9_999_999 },
                     format: { with: /\A\d+\z/ }
-  validates :category_id, :condition_id, :origin_area_id, :shipping_charges_id, :send_day_id,
+  validates :category_id, :condition_id, :origin_area_id, :shipping_charge_id, :send_day_id,
             presence: true, numericality: { other_than: 1 }
   validates :user, presence: true
 end
