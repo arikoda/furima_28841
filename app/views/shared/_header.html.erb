@@ -17,7 +17,7 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
       <%# ログインの有無で表示が変わるように分岐させましょう%>
-        <li><%#= link_to current_user.nickname, "#", class: "user-nickname"  %></li>
+        <li><%= link_to current_user.nickname, "#", class: "user-nickname"  %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
         <li><%= link_to '会員登録変更', edit_user_registration_path, class: "edit" %></li>
       </ul>
