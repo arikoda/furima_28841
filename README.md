@@ -95,8 +95,8 @@ Things you may want to cover:
 |    Column      |    Type     |   Options                      |
 | -------------- | ------------| ------------------------------ |
 | postal_code    |  string     | null: false                    |
-| prefecture     |  integer    | null: false                    | 
-| municipality   |  string     | null: false                    | 
+| origin_area_id |  integer    | null: false                    | 
+| prefecture     |  string     | null: false                    | 
 | home_number    |  string     | null: false                    |
 | building_number|  string     |                                |
 | order          |  references | null: false, foreign_key: true |
