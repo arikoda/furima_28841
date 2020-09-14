@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = OrderAddress.new(order_params)
-
     if @order.valid?
       pay_item
       @order.save
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_address).permit(:postal_code, :origin_area_id, :prefecture, :home_number, :building_number, :telephone, :token).merge(item_id: params[:item_id], user_id: current_user.id, order_id: params[:order_id])
+    params.require(:order_address).permit(:postal_code, :origin_area_id, :prefecture, :home_number, :building_number, :telephone ).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id, order_id: params[:order_id])
   end
 
   def set_order
