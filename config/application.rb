@@ -18,4 +18,4 @@ module Furima28841
   end
 end
 
-Faker::Config.locale = 'ja'
+#Faker::Config.locale = 'ja'
