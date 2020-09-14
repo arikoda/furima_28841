@@ -5,7 +5,7 @@ FactoryBot.define do
     prefecture { Faker::Address.city_prefix }
     home_number { Faker::Number.within(range: 1..300) }
     building_number { Faker::Address.building_number }
-    telephone      { Faker::Number.leading_zero_number(digits: 11) }
-
+    telephone { Faker::Number.leading_zero_number(digits: 11) }
+    token { ENV['PAYJP_SECRET_KEY'] }
   end
 end

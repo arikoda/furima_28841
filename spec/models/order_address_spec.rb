@@ -14,11 +14,10 @@ RSpec.describe Order, type: :model do
     context '商品が購入できるとき' do
       it 'postal_code,origin_area_id,prefecture,telephoneが入力されていれば出品できる' do
         expect(@order_address).to be_valid
-      end    
+      end
     end
 
     context '商品購入ができないとき' do
-
       it '購入者の郵便番号がないと購入できない' do
         @order_address.postal_code = ''
         @order_address.valid?
@@ -45,7 +44,7 @@ RSpec.describe Order, type: :model do
       it '郵便番号にハイフンがないと購入できない' do
         @order_address.postal_code = '1123455'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is nvalid, Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is nvalid, Include hyphen(-)')
       end
 
       it '電話番号が入力されていないと購入できない' do
@@ -55,9 +54,14 @@ RSpec.describe Order, type: :model do
       end
 
       it '電話番号は11桁以内でないと登録できない' do
-        @order_address.telephone = 123456
+        @order_address.telephone = 123_456
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone is too short (minimum is 10 characters)")
+        expect(@order_address.errors.full_messages).to include('Telephone is too short (minimum is 10 characters)')
+      end
+      it 'tokenがないと登録できない' do
+        @order_address.token = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
