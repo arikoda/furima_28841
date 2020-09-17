@@ -21,47 +21,47 @@ RSpec.describe Order, type: :model do
       it '購入者の郵便番号がないと購入できない' do
         @order_address.postal_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
+        expect(@order_address.errors.full_messages).to include("郵便番号を入力してください", "郵便番号が正しくありません。ハイフン（−）を入れてください")
       end
 
       it '購入者の都道府県が選択がid1の場合（未選択の場合）購入できない' do
         @order_address.origin_area_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Origin area can't be blank")
+        expect(@order_address.errors.full_messages).to include("都道府県が選択されていません")
       end
 
       it '購入者の住所（市町村）が入力されていないと購入できない' do
         @order_address.prefecture = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_address.errors.full_messages).to include("市区町村を入力してください")
       end
 
       it '購入者の住所の番地が入力されていないと購入できない' do
         @order_address.home_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Home number can't be blank")
+        expect(@order_address.errors.full_messages).to include("番地を入力してください")
       end
       it '郵便番号にハイフンがないと購入できない' do
         @order_address.postal_code = '1123455'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal code is nvalid, Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('郵便番号が正しくありません。ハイフン（−）を入れてください')
       end
 
       it '電話番号が入力されていないと購入できない' do
         @order_address.telephone = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone can't be blank")
+        expect(@order_address.errors.full_messages).to include("電話番号を入力してください", "電話番号は10文字以上で入力してください")
       end
 
       it '電話番号は11桁以内でないと登録できない' do
         @order_address.telephone = 123_456
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Telephone is too short (minimum is 10 characters)')
+        expect(@order_address.errors.full_messages).to include('電話番号は10文字以上で入力してください')
       end
       it 'tokenがないと登録できない' do
         @order_address.token = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Token can't be blank")
+        expect(@order_address.errors.full_messages).to include("カード情報を入力してください")
       end
     end
   end

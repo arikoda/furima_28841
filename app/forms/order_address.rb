@@ -4,13 +4,13 @@ class OrderAddress
 
   with_options presence: true do
     validates :telephone, length: { minimum: 10, maximum: 11 }
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is nvalid, Include hyphen(-)' }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'が正しくありません。ハイフン（−）を入れてください' }
     validates :home_number
     validates :prefecture
     validates :token
   end
 
-  validates :origin_area_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :origin_area_id, numericality: { other_than: 1, message: "が選択されていません" }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)

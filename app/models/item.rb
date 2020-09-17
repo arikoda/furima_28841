@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :name
     validates :explanation
     validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9_999_999 }, format: { with: /\A\d+\z/ }
-    validates :category_id, :condition_id, :origin_area_id, :shipping_charge_id, :send_day_id, numericality: { other_than: 1 }
+    validates :category_id, :condition_id, :origin_area_id, :shipping_charge_id, :send_day_id, numericality: { other_than: 1 , message: "が選択されていません"}
     validates :user
   end
 end

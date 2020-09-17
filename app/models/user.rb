@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :family_name, format: { with: /\A[ぁ-んァ-ンー-龥]/ }
-    validates :first_name, format: { with: /\A[ぁ-んァ-ンー-龥]/ }
-    validates :family_n_ruby, format: { with: /\A[ァ-ヶー-]+\z/ }
-    validates :first_n_ruby, format: { with: /\A[ァ-ヶー-]+\z/ }
+    validates :family_name, format: { with: /\A[ぁ-んァ-ンー-龥]/, message: "は全角で入力してください" }
+    validates :first_name, format: { with: /\A[ぁ-んァ-ンー-龥]/, message: "は全角で入力してください" }
+    validates :family_n_ruby, format: { with: /\A[ァ-ヶー-]+\z/, message: "フリガナ（姓）は全角カタカナで入力してください" }
+    validates :first_n_ruby, format: { with: /\A[ァ-ヶー-]+\z/, message: "フリガナ（名）は全角カタカナで入力してください" }
     validates :birthday
   end
 
