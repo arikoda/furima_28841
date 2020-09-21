@@ -1,0 +1,89 @@
+<%= render "shared/second-header"%>
+
+<div class = "title">
+  商品検索
+</div>
+<ul class="search-list">
+  <%= search_form_for @p, url:search_result_items_path  do |f| %>
+    <li>
+    <%= f.label :name_eq, '商品名:' %>
+    <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' %>
+    </li>
+    <li>
+    <%= f.label :category_id_eq, 'カテゴリー:' %>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
+    </li>
+    <li>
+    <%= f.label :condition_id_eq, '商品の状態:' %>
+    <%= f.collection_select :condition_id_eq, Condition.all, :id, :name, include_brank: '指定なし' %>
+    </li>
+
+</ul>
+<ul class= "price">
+  <%= f.label :price, '価格:' %>
+  <li>
+  <%= f.radio_button :price_lteq, '' %>
+  指定なし</li>
+  <li>
+  <%= f.radio_button :price_lteq, '1000' %>
+  1000円以下</li>
+  <li>
+  <%= f.radio_button :price_lteq, '2000' %>
+  2000円以下</li>
+  <li>
+  <%= f.radio_button :price_lteq, '5000' %>
+  5000円以下</li>
+  <li>
+  <%= f.radio_button :price_lteq, '10000' %>
+  10000円以下</li>
+  <li>
+  <%= f.radio_button :price_lteq, '100000' %>
+  100000円以下</li>
+  <br>
+</ul> 
+  <div class="search-btn-contents">
+      <%= f.submit "検索する", class:"search-btn" %>
+  </div>
+
+<%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>商品一覧</h2>
+    <ul class='item-lists'>
+      <% if @item == nil %>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id) do %>
+              <div class='item-img-content'>
+              <%= image_tag item.image, class: "item-img" %>
+            <%# 商品が売れていればsold outの表示 %>
+              <% if item.order != nil %>
+                <div class='sold-out'>
+                <span>Sold Out!!</span>
+                </div>
+              <%end%>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br>(税込み)</span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class = "back">
+  <%=link_to 'トップページにもどる', root_path, class:"back-btn" %>
+</div>
+
+<%= render "shared/footer" %>

@@ -57,7 +57,12 @@
 .lists-left {
   display: flex;
   min-width: 200px;
+}
 
+a{ 
+  color: black;
+  justify-content: space-between;
+  margin-right: 30px;
 }
 
 .category-list {
@@ -75,6 +80,7 @@
   display: flex;
   list-style: none;
   align-items: flex-end;
+
 }
 
 
