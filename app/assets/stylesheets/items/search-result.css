@@ -1,0 +1,45 @@
+.back-btn{
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  padding: 15px 35%;
+  text-decoration: none;
+}
+
+
+.item-list {
+  width: 100vw;
+  display: block;
+  justify-content: space-around;
+  
+}
+
+.search-result{
+  display: flex;
+  justify-content: space-between
+}
+
+.item-img-content {
+  position: relative;
+
+}
+
+.item-img {
+  width: 33vh;
+  height: 33vh;
+}
+.item-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+}
+
+.item-name {
+  font-size: 2.5vh;
+}
+
+.item-price {
+  font-size: 1.5vh;
+  display: flex;
+  justify-content: space-between;
+}

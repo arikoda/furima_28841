@@ -1,0 +1,29 @@
+<%= render "shared/second-header"%>
+<h1>検索結果</h1>
+<div class = "search-result">
+  <% if @results.length != 0 %>
+    <% @results.each do |result| %>
+      <%#= link_to item_path,(result.item) do %>
+      <li class='item-list'>
+        <%= image_tag result.image, class: "item-img" %>
+        <div class= "item-info">
+          <h3 class ="item-name">
+            <%= result.name %></h3>
+            <div class = "item-price">
+            <span><%= result.price %>円<br>(税込み）</span>
+            </div>
+        </div>
+      </li>
+    <% end %>
+    <%# end %>
+  <% else %>
+    該当する商品はありません
+  <% end %>
+</div>
+  <br>
+  <div class = "back">
+  <%= link_to 'トップページへ戻る', root_path, class: "back-btn" %>
+  </div>
+
+
+  
