@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "items#index"
-  resources :items, except: [:index] do
+  root to: "tops#index"
+  resources :items  do
     resources :orders, only: [:create, :index]
     collection do
-      get 'search', 'search_result' 
+      get 'search' 
     end
   end
 end

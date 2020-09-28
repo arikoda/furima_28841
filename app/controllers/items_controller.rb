@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :search_item, only: [:search, :search_result]
+  before_action :search_item, only: [:index, :search]
   
   def index
     @items = Item.all.order('created_at DESC')
+    set_item_column
   end
 
   def new
@@ -42,13 +43,12 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.all
+    @results = @p.result
+    # .includes(:image, :cateogry_id, :condition_id)
     set_item_column
+    #binding.pry
   end
 
-  def search_result
-    @results = @p.result#.includes(:image, :cateogry_id, :condition_id)
-  end
 
   private
 
@@ -68,8 +68,5 @@ class ItemsController < ApplicationController
   
   def set_item_column
     @item_name = Item.select("name").distinct
-    #@item_condition = Condition.select("name")
-    #@item_category = Category.select("name")
-    
   end
 end

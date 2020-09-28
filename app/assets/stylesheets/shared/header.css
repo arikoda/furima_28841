@@ -62,7 +62,7 @@
 a{ 
   color: black;
   justify-content: space-between;
-  margin-right: 30px;
+
 }
 
 .category-list {
@@ -95,6 +95,7 @@ a{
 .logout {
   text-decoration: none;
   color: #333333;
+  margin-right: 30px;
 }
 
 .login {

@@ -1,5 +1,5 @@
 .title{
-  font-size: 25px;
+  font-size: 20px;
   color: rgb(42, 95, 165);
   display: flex;
   justify-content: center;
@@ -7,13 +7,13 @@
 }
 
 .search-list{
-  font-size: 20px;
-  margin-left: 40px;
+  margin: 0 20px;
+
 }
 
 .price{
-  font-size: 20px;
-  margin-left: 40px;
+  margin-left: 30px;
+
 }
 
 .search-btn-contents {
@@ -25,7 +25,6 @@
   background: #aaa;
   border: 1px solid #aaa;
   color: #fff;
-  width: 30%;
   height: 50px;
   font-size: 14px;
   margin-bottom: 4vh;
@@ -37,6 +36,7 @@ input{
 
 li{
   margin-bottom: 10px;
+  font-size:15px;
 }
 
 .back{
@@ -51,3 +51,4 @@ li{
   padding: 15px 35%;
   text-decoration: none;
 }
+
