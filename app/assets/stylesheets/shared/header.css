@@ -80,7 +80,10 @@ a{
   display: flex;
   list-style: none;
   align-items: flex-end;
+}
 
+.post{
+  margin-right: 30px;
 }
 
 

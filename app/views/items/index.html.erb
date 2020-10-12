@@ -1,4 +1,30 @@
-<%= render "shared/header" %>
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+      <form class="search-form" action="#">
+        <input class='input-box' placeholder='キーワードから探す'>
+        <button class="search-button">
+          <%= image_tag "search.png", class:"search-icon" %>
+        </button>
+      </form>
+  </div>
+  <div class='nav'>
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+      <%# ログインの有無で表示が変わるように分岐させましょう%>
+        <li><%= link_to current_user.nickname, "#", class: "user-nickname"  %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+        <li><%= link_to '会員登録変更', edit_user_registration_path, class: "edit" %></li>
+      </ul>
+      <% else %>
+      <ul class='lists-right'>
+        <li><%= link_to "ログイン", user_session_path, class: "post" %></li>
+        <li><%= link_to "新規登録", new_user_registration_path, class: "post"%></li>
+      </ul>
+      <% end%>
+    </ul>
+  </div>
+</header>
 <div class='main1'>
   <div class ='left'>
     <%# 検索フォーム%>
@@ -56,7 +82,6 @@
     <%# 商品一覧 %>
     <div class='item-contents'>
       <h2 class='title'>商品一覧</h2>
-      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
         <ul class='item-lists'>
           <% if @item == nil %>
              <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
@@ -120,4 +145,3 @@
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>
-
